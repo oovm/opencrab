@@ -1,0 +1,12 @@
+[workspace]
+members = ["backends/*"]
+default-members = [
+    "backends/opencrab",
+]
+exclude = [
+    "backends/.DS_Store",
+]
+
+[profile.release]
+lto = true
+panic = "abort"
