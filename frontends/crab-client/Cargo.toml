@@ -1,0 +1,21 @@
+[package]
+name = "crab-client"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+homepage.workspace = true
+repository.workspace = true
+description = "Crab Client - OpenCrab 客户端共享库"
+keywords = ["client", "database", "ai", "agent"]
+categories = ["asynchronous"]
+documentation = "https://docs.rs/crab-client"
+
+[dependencies]
+rusqlite = "0.31"
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+uuid = { workspace = true }
+dirs = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }

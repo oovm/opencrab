@@ -1,12 +1,98 @@
 [workspace]
-members = ["backends/*"]
-default-members = [
+resolver = "2"
+members = [
+    "backends/crab-types",
+    "backends/crab-agent",
+    "backends/crab-skill",
+    "backends/crab-memory",
+    "backends/crab-chat",
+    "backends/crab-tool",
+    "backends/crab-scheduler",
+    "backends/crab-workspace",
     "backends/opencrab",
+    "frontends/crab-client",
+    "protocols/skynet-types",
+    "protocols/skynet-auth",
+    "protocols/skynet-bridge",
+    "protocols/skynet-chat",
+    "protocols/skynet-gateway",
+    "protocols/skynet-service",
 ]
-exclude = [
-    "backends/.DS_Store",
+default-members = [
+    "backends/crab-types",
+    "backends/crab-agent",
+    "backends/crab-skill",
+    "backends/crab-memory",
+    "backends/crab-chat",
+    "backends/crab-tool",
+    "backends/crab-scheduler",
+    "backends/crab-workspace",
+    "backends/opencrab",
+    "frontends/crab-client",
+    "protocols/skynet-types",
+    "protocols/skynet-auth",
+    "protocols/skynet-bridge",
+    "protocols/skynet-chat",
+    "protocols/skynet-gateway",
+    "protocols/skynet-service",
 ]
 
-[profile.release]
-lto = true
-panic = "abort"
+[workspace.package]
+version = "0.0.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+homepage = "https://github.com/oovm/opencrab"
+repository = "https://github.com/oovm/opencrab"
+
+[workspace.dependencies]
+tokio = { version = "1.42", features = ["full"] }
+axum = "0.7"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sqlx = { version = "0.8", features = ["runtime-tokio", "sqlite", "chrono", "json", "uuid", "macros"] }
+async-trait = "0.1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1.0", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+thiserror = "2.0"
+futures = "0.3"
+once_cell = "1.20"
+config = "0.15"
+dotenvy = "0.15"
+dirs = "5.0"
+anyhow = "1.0"
+rusqlite = "0.31"
+blake3 = "1.5"
+hex = "0.4"
+redis = "0.25"
+
+crab-types = { path = "backends/crab-types" }
+crab-agent = { path = "backends/crab-agent" }
+crab-skill = { path = "backends/crab-skill" }
+crab-memory = { path = "backends/crab-memory" }
+crab-chat = { path = "backends/crab-chat" }
+crab-tool = { path = "backends/crab-tool" }
+crab-scheduler = { path = "backends/crab-scheduler" }
+crab-workspace = { path = "backends/crab-workspace" }
+
+skynet-types = { path = "protocols/skynet-types" }
+skynet-auth = { path = "protocols/skynet-auth" }
+skynet-bridge = { path = "protocols/skynet-bridge" }
+skynet-chat = { path = "protocols/skynet-chat" }
+skynet-gateway = { path = "protocols/skynet-gateway" }
+skynet-memory = { path = "protocols/skynet-memory" }
+skynet-notification = { path = "protocols/skynet-notification" }
+skynet-persistence = { path = "protocols/skynet-persistence" }
+skynet-service = { path = "protocols/skynet-service" }
+skynet-storage = { path = "protocols/skynet-storage" }
+
+wae-config = { path = "../wae/backends/wae-config" }
+wae-database = { path = "../wae/backends/wae-database" }
+wae-cache = { path = "../wae/backends/wae-cache" }
+wae-https = { path = "../wae/backends/wae-https" }
+wae-effect = { path = "../wae/backends/wae-effect" }
+wae-queue = { path = "../wae/backends/wae-queue" }
+wae-event = { path = "../wae/backends/wae-event" }
+wae-storage = { path = "../wae/backends/wae-storage" }
+wae-types = { path = "../wae/backends/wae-types" }

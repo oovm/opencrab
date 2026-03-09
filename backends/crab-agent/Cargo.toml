@@ -1,0 +1,28 @@
+[package]
+name = "crab-agent"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+homepage.workspace = true
+repository.workspace = true
+description = "Crab Agent - OpenCrab 智能体管理模块"
+keywords = ["agent", "ai"]
+categories = ["ai"]
+
+[dependencies]
+async-trait = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+
+crab-types = { workspace = true }
+wae-effect = { workspace = true }
+crab-memory = { workspace = true }
+crab-skill = { workspace = true }
+crab-tool = { workspace = true }
+crab-chat = { workspace = true }

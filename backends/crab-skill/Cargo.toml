@@ -1,0 +1,21 @@
+[package]
+name = "crab-skill"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+homepage.workspace = true
+repository.workspace = true
+description = "Crab Skill - OpenCrab 技能系统模块"
+keywords = ["skill", "ai"]
+categories = ["ai"]
+
+[dependencies]
+async-trait = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+
+crab-types = { workspace = true }

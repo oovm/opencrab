@@ -1,0 +1,23 @@
+[package]
+name = "crab-workspace"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+homepage.workspace = true
+repository.workspace = true
+description = "Crab Workspace - OpenCrab 工作区管理模块"
+keywords = ["workspace", "file"]
+categories = ["filesystem"]
+
+[dependencies]
+async-trait = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+tokio = { workspace = true }
+
+crab-types = { workspace = true }
+wae-storage = { workspace = true }

@@ -1,11 +1,23 @@
 {
+    "name": "opencrab",
     "private": true,
+    "description": "OpenCrab - 基于模块化架构的 AI 助手框架",
+    "repository": "https://github.com/oovm/opencrab",
+    "homepage": "https://github.com/oovm/opencrab",
+    "license": "MIT",
     "scripts": {
-        "build": "cargo build --release",
+        "check:ci": "node scripts/check.mjs",
+        "doc": "cargo doc --no-deps --all-features",
         "test": "cargo test --release",
         "fmt": "cargo fmt --all",
-        "p": "git push && git push --tags --prune",
-        "reset": "git reset Head~ --soft",
-        "u": "cargo upgrade --workspace"
+        "push": "git push && git push --tags --prune",
+        "reset": "git reset HEAD~ --soft",
+        "u": "cargo upgrade --incompatible",
+        "lint": "biome check",
+        "lint:fix": "biome check --write",
+        "format": "biome format --write"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^1.9.4"
     }
 }

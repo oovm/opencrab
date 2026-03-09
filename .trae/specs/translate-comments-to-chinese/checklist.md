@@ -1,0 +1,28 @@
+# 将所有 crate 的英文注释翻译为中文 - 验证检查清单
+
+- [ ] crab-agent 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-channels 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-config 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-context 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-database 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-estimation 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-evaluation 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-extensions 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-history 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-hooks 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-llm 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-observability 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-orchestrator 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-pairing 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-registry 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-safety 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-sandbox 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-secrets 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-skills 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-tools 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-types 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] crab-workspace 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] opencrab 目录下所有 .rs 文件的英文注释已翻译为中文
+- [ ] 所有 public 的结构体、枚举、方法、字段都有文档注释
+- [ ] 没有使用后置注释
+- [ ] 项目可以成功编译 (`cargo build --workspace`)

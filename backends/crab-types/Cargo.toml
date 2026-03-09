@@ -1,0 +1,18 @@
+[package]
+name = "crab-types"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+homepage.workspace = true
+repository.workspace = true
+description = "Crab Types - OpenCrab 核心类型定义模块"
+keywords = ["types", "ai", "agent"]
+categories = ["asynchronous"]
+documentation = "https://docs.rs/crab-types"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+uuid = { workspace = true }
+wae-types = { workspace = true }

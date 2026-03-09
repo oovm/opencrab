@@ -1,0 +1,31 @@
+{
+    "name": "@doki-land/crab-shared",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "./src/index.ts",
+    "types": "./src/index.ts",
+    "exports": {
+        ".": "./src/index.ts",
+        "./types": "./src/types/index.ts",
+        "./services": "./src/services/index.ts",
+        "./stores": "./src/stores/index.ts",
+        "./plugins": "./src/plugins/index.ts",
+        "./utils": "./src/utils/index.ts",
+        "./components": "./src/components/index.ts"
+    },
+    "scripts": {
+        "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@element-plus/icons-vue": "^2.3.2",
+        "@fluent/bundle": "^0.19.1",
+        "element-plus": "^2.13.1",
+        "fluent-vue": "^3.8.1",
+        "pinia": "^3.0.4",
+        "vue": "^3.5.13"
+    },
+    "devDependencies": {
+        "@vue/tsconfig": "^0.7.0",
+        "typescript": "~5.7.2"
+    }
+}

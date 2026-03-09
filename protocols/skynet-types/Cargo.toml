@@ -1,0 +1,18 @@
+[package]
+name = "skynet-types"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Core type definitions for Sky Net Protocol"
+keywords = ["sky-net", "types", "protocol"]
+categories = ["network-programming", "data-structures"]
+documentation = "https://docs.rs/skynet-types"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+uuid = { workspace = true }
+blake3 = { workspace = true }
+hex = { workspace = true }

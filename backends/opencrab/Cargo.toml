@@ -1,18 +1,43 @@
 [package]
-name = "sub_projects"
-publish = false
-version = "0.0.0"
-authors = ["Aster <192607617@qq.com>"]
-description = "..."
-repository = "https://github.com/oovm/sub_projects"
-documentation = "https://docs.rs/sub_projects"
-readme = "Readme.md"
-license = "MPL-2.0"
-edition = "2021"
+name = "opencrab"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+homepage.workspace = true
+repository.workspace = true
+description = "OpenCrab - 基于模块化架构的 AI 助手框架"
+keywords = ["ai", "agent", "llm", "chatbot", "automation"]
+categories = ["asynchronous", "web-programming"]
+documentation = "https://docs.rs/opencrab"
+
+[[bin]]
+name = "opencrab"
+path = "src/bin/opencrab.rs"
 
 [dependencies]
+crab-types = { workspace = true }
+wae-config = { workspace = true }
+wae-database = { workspace = true }
+wae-cache = { workspace = true }
+wae-effect = { workspace = true }
+wae-https = { workspace = true }
+wae-queue = { workspace = true }
+wae-event = { workspace = true }
+wae-storage = { workspace = true }
+crab-agent = { workspace = true }
+crab-skill = { workspace = true }
+crab-memory = { workspace = true }
+crab-chat = { workspace = true }
+crab-tool = { workspace = true }
+crab-scheduler = { workspace = true }
+crab-workspace = { workspace = true }
+
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
+futures = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+anyhow = { workspace = true }
 
 [dev-dependencies]
-
-[features]
-default = []
+tokio = { workspace = true, features = ["macros", "rt-multi-thread", "test-util"] }
