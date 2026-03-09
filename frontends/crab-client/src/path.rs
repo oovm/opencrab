@@ -25,5 +25,3 @@ pub fn get_database_path() -> Option<PathBuf> {
         path
     })
 }
-
-

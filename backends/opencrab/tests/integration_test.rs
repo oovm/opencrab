@@ -11,7 +11,7 @@ async fn test_agent_creation() {
         .create_agent("Test Agent", Some("A test agent"), AgentType::General)
         .await
         .unwrap();
-    
+
     assert_eq!(agent.name, "Test Agent");
     assert_eq!(agent.agent_type, AgentType::General);
     assert_eq!(agent.status, AgentStatus::Uninitialized);
@@ -29,7 +29,7 @@ async fn test_skill_registration() {
         )
         .await
         .unwrap();
-    
+
     assert_eq!(skill.name, "Test Skill");
     assert_eq!(skill.skill_type, SkillType::Core);
 }
@@ -49,7 +49,7 @@ async fn test_memory_creation() {
         )
         .await
         .unwrap();
-    
+
     assert_eq!(memory.owner_id, owner_id);
     assert_eq!(memory.memory_type, MemoryType::Message);
     assert_eq!(memory.content, "Test memory content");
@@ -63,7 +63,7 @@ async fn test_conversation_creation() {
         .create_conversation(user_id, "Test Conversation", Some("A test conversation"))
         .await
         .unwrap();
-    
+
     assert_eq!(conversation.user_id, user_id);
     assert_eq!(conversation.title, "Test Conversation");
     assert!(!conversation.is_archived);
@@ -73,14 +73,10 @@ async fn test_conversation_creation() {
 async fn test_tool_registration() {
     let tool_service = MemoryToolService::new();
     let tool = tool_service
-        .register_tool(
-            "Test Tool",
-            Some("A test tool"),
-            serde_json::json!({}),
-        )
+        .register_tool("Test Tool", Some("A test tool"), serde_json::json!({}))
         .await
         .unwrap();
-    
+
     assert_eq!(tool.name, "Test Tool");
 }
 
@@ -91,7 +87,7 @@ async fn test_task_creation() {
         .create_task("Test Task", Some("A test task"), None)
         .await
         .unwrap();
-    
+
     assert_eq!(task.name, "Test Task");
     assert_eq!(task.status, TaskStatus::Pending);
 }
@@ -109,7 +105,7 @@ async fn test_workspace_creation() {
         )
         .await
         .unwrap();
-    
+
     assert_eq!(workspace.name, "Test Workspace");
     assert_eq!(workspace.path, "/test/path");
     assert_eq!(workspace.creator_id, creator_id);
@@ -119,5 +115,5 @@ async fn test_workspace_creation() {
 fn test_error_creation() {
     let error = Error::not_implemented("test_feature");
     assert_eq!(error.http_status(), 500);
-    assert_eq!(error.category(), ErrorCategory::Internal);
+    assert_eq!(error.category(), crab_types::ErrorCategory::Internal);
 }

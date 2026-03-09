@@ -102,7 +102,11 @@ pub trait SubnetService: Send + Sync {
     /// # 返回
     /// - 成功时返回创建的子网
     /// - 失败时返回错误
-    async fn create_subnet(&self, metadata: SubnetMetadata, created_by: AuthId) -> Result<Subnet, SkyNetError>;
+    async fn create_subnet(
+        &self,
+        metadata: SubnetMetadata,
+        created_by: AuthId,
+    ) -> Result<Subnet, SkyNetError>;
 
     /// 获取子网信息
     ///
@@ -123,7 +127,11 @@ pub trait SubnetService: Send + Sync {
     /// # 返回
     /// - 成功时返回更新后的子网
     /// - 失败时返回错误
-    async fn update_subnet_metadata(&self, subnet_id: SubnetId, metadata: SubnetMetadata) -> Result<Subnet, SkyNetError>;
+    async fn update_subnet_metadata(
+        &self,
+        subnet_id: SubnetId,
+        metadata: SubnetMetadata,
+    ) -> Result<Subnet, SkyNetError>;
 
     /// 删除子网
     ///
@@ -144,7 +152,11 @@ pub trait SubnetService: Send + Sync {
     /// # 返回
     /// - 成功时返回更新后的成员列表
     /// - 失败时返回错误
-    async fn add_member(&self, subnet_id: SubnetId, member: Member) -> Result<Vec<Member>, SkyNetError>;
+    async fn add_member(
+        &self,
+        subnet_id: SubnetId,
+        member: Member,
+    ) -> Result<Vec<Member>, SkyNetError>;
 
     /// 移除子网成员
     ///
@@ -155,7 +167,11 @@ pub trait SubnetService: Send + Sync {
     /// # 返回
     /// - 成功时返回更新后的成员列表
     /// - 失败时返回错误
-    async fn remove_member(&self, subnet_id: SubnetId, user_id: UserId) -> Result<Vec<Member>, SkyNetError>;
+    async fn remove_member(
+        &self,
+        subnet_id: SubnetId,
+        user_id: UserId,
+    ) -> Result<Vec<Member>, SkyNetError>;
 
     /// 获取子网成员列表
     ///
@@ -176,7 +192,11 @@ pub trait SubnetService: Send + Sync {
     /// # 返回
     /// - 成功时返回创建的频道
     /// - 失败时返回错误
-    async fn create_channel(&self, subnet_id: SubnetId, channel: Channel) -> Result<Channel, SkyNetError>;
+    async fn create_channel(
+        &self,
+        subnet_id: SubnetId,
+        channel: Channel,
+    ) -> Result<Channel, SkyNetError>;
 
     /// 获取频道信息
     ///
@@ -187,7 +207,11 @@ pub trait SubnetService: Send + Sync {
     /// # 返回
     /// - 成功时返回频道信息
     /// - 失败时返回错误
-    async fn get_channel(&self, subnet_id: SubnetId, channel_id: ChannelId) -> Result<Channel, SkyNetError>;
+    async fn get_channel(
+        &self,
+        subnet_id: SubnetId,
+        channel_id: ChannelId,
+    ) -> Result<Channel, SkyNetError>;
 
     /// 获取子网中的所有频道
     ///
@@ -208,7 +232,11 @@ pub trait SubnetService: Send + Sync {
     /// # 返回
     /// - 成功时返回 ()
     /// - 失败时返回错误
-    async fn delete_channel(&self, subnet_id: SubnetId, channel_id: ChannelId) -> Result<(), SkyNetError>;
+    async fn delete_channel(
+        &self,
+        subnet_id: SubnetId,
+        channel_id: ChannelId,
+    ) -> Result<(), SkyNetError>;
 
     /// 更新权限策略
     ///
@@ -240,7 +268,11 @@ pub trait MessageService: Send + Sync {
     /// # 返回
     /// - 成功时返回发送后的消息
     /// - 失败时返回错误
-    async fn send_message(&self, subnet_id: SubnetId, message: Message) -> Result<Message, SkyNetError>;
+    async fn send_message(
+        &self,
+        subnet_id: SubnetId,
+        message: Message,
+    ) -> Result<Message, SkyNetError>;
 
     /// 获取消息
     ///
@@ -251,7 +283,11 @@ pub trait MessageService: Send + Sync {
     /// # 返回
     /// - 成功时返回消息
     /// - 失败时返回错误
-    async fn get_message(&self, subnet_id: SubnetId, message_id: MessageId) -> Result<Message, SkyNetError>;
+    async fn get_message(
+        &self,
+        subnet_id: SubnetId,
+        message_id: MessageId,
+    ) -> Result<Message, SkyNetError>;
 
     /// 获取频道的历史消息
     ///
@@ -319,7 +355,11 @@ pub trait MessageService: Send + Sync {
     /// # 返回
     /// - 成功时返回 ()
     /// - 失败时返回错误
-    async fn delete_message(&self, subnet_id: SubnetId, message_id: MessageId) -> Result<(), SkyNetError>;
+    async fn delete_message(
+        &self,
+        subnet_id: SubnetId,
+        message_id: MessageId,
+    ) -> Result<(), SkyNetError>;
 
     /// 添加消息表情反应
     ///
@@ -330,7 +370,11 @@ pub trait MessageService: Send + Sync {
     /// # 返回
     /// - 成功时返回添加后的表情反应
     /// - 失败时返回错误
-    async fn add_reaction(&self, subnet_id: SubnetId, reaction: Reaction) -> Result<Reaction, SkyNetError>;
+    async fn add_reaction(
+        &self,
+        subnet_id: SubnetId,
+        reaction: Reaction,
+    ) -> Result<Reaction, SkyNetError>;
 
     /// 移除消息表情反应
     ///
@@ -341,7 +385,11 @@ pub trait MessageService: Send + Sync {
     /// # 返回
     /// - 成功时返回 ()
     /// - 失败时返回错误
-    async fn remove_reaction(&self, subnet_id: SubnetId, reaction_id: String) -> Result<(), SkyNetError>;
+    async fn remove_reaction(
+        &self,
+        subnet_id: SubnetId,
+        reaction_id: String,
+    ) -> Result<(), SkyNetError>;
 
     /// 获取消息的所有表情反应
     ///
@@ -352,7 +400,11 @@ pub trait MessageService: Send + Sync {
     /// # 返回
     /// - 成功时返回表情反应列表
     /// - 失败时返回错误
-    async fn get_reactions(&self, subnet_id: SubnetId, message_id: MessageId) -> Result<Vec<Reaction>, SkyNetError>;
+    async fn get_reactions(
+        &self,
+        subnet_id: SubnetId,
+        message_id: MessageId,
+    ) -> Result<Vec<Reaction>, SkyNetError>;
 
     /// 置顶消息
     ///
@@ -385,7 +437,11 @@ pub trait MessageService: Send + Sync {
     /// # 返回
     /// - 成功时返回置顶列表
     /// - 失败时返回错误
-    async fn get_pinned_messages(&self, subnet_id: SubnetId, channel_id: Option<ChannelId>) -> Result<Vec<Pin>, SkyNetError>;
+    async fn get_pinned_messages(
+        &self,
+        subnet_id: SubnetId,
+        channel_id: Option<ChannelId>,
+    ) -> Result<Vec<Pin>, SkyNetError>;
 
     /// 创建消息线程
     ///
@@ -396,7 +452,11 @@ pub trait MessageService: Send + Sync {
     /// # 返回
     /// - 成功时返回创建的线程
     /// - 失败时返回错误
-    async fn create_thread(&self, subnet_id: SubnetId, thread: Thread) -> Result<Thread, SkyNetError>;
+    async fn create_thread(
+        &self,
+        subnet_id: SubnetId,
+        thread: Thread,
+    ) -> Result<Thread, SkyNetError>;
 
     /// 获取线程消息
     ///
@@ -448,8 +508,12 @@ pub trait ResourceService: Send + Sync {
     /// # 返回
     /// - 成功时返回创建的资源
     /// - 失败时返回错误
-    async fn create_resource(&self, subnet_id: SubnetId, resource: Resource, content: Vec<u8>)
-    -> Result<Resource, SkyNetError>;
+    async fn create_resource(
+        &self,
+        subnet_id: SubnetId,
+        resource: Resource,
+        content: Vec<u8>,
+    ) -> Result<Resource, SkyNetError>;
 
     /// 获取资源信息
     ///
@@ -460,7 +524,11 @@ pub trait ResourceService: Send + Sync {
     /// # 返回
     /// - 成功时返回资源信息
     /// - 失败时返回错误
-    async fn get_resource(&self, subnet_id: SubnetId, resource_id: ResourceId) -> Result<Resource, SkyNetError>;
+    async fn get_resource(
+        &self,
+        subnet_id: SubnetId,
+        resource_id: ResourceId,
+    ) -> Result<Resource, SkyNetError>;
 
     /// 下载资源内容
     ///
@@ -471,7 +539,11 @@ pub trait ResourceService: Send + Sync {
     /// # 返回
     /// - 成功时返回资源内容（字节数据）
     /// - 失败时返回错误
-    async fn download_resource(&self, subnet_id: SubnetId, resource_id: ResourceId) -> Result<Vec<u8>, SkyNetError>;
+    async fn download_resource(
+        &self,
+        subnet_id: SubnetId,
+        resource_id: ResourceId,
+    ) -> Result<Vec<u8>, SkyNetError>;
 
     /// 更新资源
     ///
@@ -501,7 +573,11 @@ pub trait ResourceService: Send + Sync {
     /// # 返回
     /// - 成功时返回 ()
     /// - 失败时返回错误
-    async fn delete_resource(&self, subnet_id: SubnetId, resource_id: ResourceId) -> Result<(), SkyNetError>;
+    async fn delete_resource(
+        &self,
+        subnet_id: SubnetId,
+        resource_id: ResourceId,
+    ) -> Result<(), SkyNetError>;
 
     /// 列出子网中的资源
     ///
@@ -530,7 +606,12 @@ pub trait ResourceService: Send + Sync {
     /// # 返回
     /// - 成功时返回匹配的资源列表
     /// - 失败时返回错误
-    async fn search_resources(&self, subnet_id: SubnetId, query: String, limit: u32) -> Result<Vec<Resource>, SkyNetError>;
+    async fn search_resources(
+        &self,
+        subnet_id: SubnetId,
+        query: String,
+        limit: u32,
+    ) -> Result<Vec<Resource>, SkyNetError>;
 
     /// 获取资源的历史版本
     ///
@@ -541,7 +622,11 @@ pub trait ResourceService: Send + Sync {
     /// # 返回
     /// - 成功时返回资源的历史版本列表
     /// - 失败时返回错误
-    async fn get_resource_versions(&self, subnet_id: SubnetId, resource_id: ResourceId) -> Result<Vec<Resource>, SkyNetError>;
+    async fn get_resource_versions(
+        &self,
+        subnet_id: SubnetId,
+        resource_id: ResourceId,
+    ) -> Result<Vec<Resource>, SkyNetError>;
 
     /// 恢复资源到特定版本
     ///

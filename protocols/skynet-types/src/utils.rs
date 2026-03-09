@@ -39,5 +39,6 @@ pub fn timestamp_millis() -> i64 {
 ///
 /// * `s` - UUID 字符串
 pub fn parse_uuid(s: &str) -> SkyNetResult<Uuid> {
-    Uuid::parse_str(s).map_err(|e| SkyNetError::new(SkyNetErrorKind::UuidParse { msg: e.to_string() }))
+    Uuid::parse_str(s)
+        .map_err(|e| SkyNetError::new(SkyNetErrorKind::UuidParse { msg: e.to_string() }))
 }

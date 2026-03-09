@@ -3,8 +3,8 @@ use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use skynet_types::{
-    BridgeConfig, Message, PlatformConversation, PlatformEvent, PlatformMessage, PlatformType, PlatformUser, SkyNetError,
-    SkyNetErrorKind, SkyNetResult,
+    BridgeConfig, Message, PlatformConversation, PlatformEvent, PlatformMessage, PlatformType,
+    PlatformUser, SkyNetError, SkyNetErrorKind, SkyNetResult,
 };
 use uuid::Uuid;
 
@@ -87,7 +87,14 @@ impl UserMapping {
     /// - 新的用户映射实例
     pub fn new(platform: PlatformType, platform_user_id: String, internal_user_id: Uuid) -> Self {
         let now = Utc::now();
-        Self { id: Uuid::new_v4(), platform, platform_user_id, internal_user_id, created_at: now, updated_at: now }
+        Self {
+            id: Uuid::new_v4(),
+            platform,
+            platform_user_id,
+            internal_user_id,
+            created_at: now,
+            updated_at: now,
+        }
     }
 }
 
@@ -118,7 +125,11 @@ impl ConversationMapping {
     ///
     /// # 返回
     /// - 新的会话映射实例
-    pub fn new(platform: PlatformType, platform_conversation_id: String, internal_conversation_id: Uuid) -> Self {
+    pub fn new(
+        platform: PlatformType,
+        platform_conversation_id: String,
+        internal_conversation_id: Uuid,
+    ) -> Self {
         let now = Utc::now();
         Self {
             id: Uuid::new_v4(),
@@ -180,7 +191,10 @@ pub trait BridgeService: Send + Sync {
     /// # 返回
     /// - 成功时返回平台消息
     /// - 失败时返回错误
-    async fn receive_message(&self, platform_conversation_id: &str) -> SkyNetResult<PlatformMessage>;
+    async fn receive_message(
+        &self,
+        platform_conversation_id: &str,
+    ) -> SkyNetResult<PlatformMessage>;
 
     /// 发送消息到外部平台
     ///
@@ -191,7 +205,11 @@ pub trait BridgeService: Send + Sync {
     /// # 返回
     /// - 成功时返回发送的平台消息
     /// - 失败时返回错误
-    async fn send_message(&self, platform_conversation_id: &str, content: &str) -> SkyNetResult<PlatformMessage>;
+    async fn send_message(
+        &self,
+        platform_conversation_id: &str,
+        content: &str,
+    ) -> SkyNetResult<PlatformMessage>;
 
     /// 处理平台事件
     ///
@@ -221,7 +239,10 @@ pub trait BridgeService: Send + Sync {
     /// # 返回
     /// - 成功时返回平台会话信息
     /// - 失败时返回错误
-    async fn get_platform_conversation(&self, platform_conversation_id: &str) -> SkyNetResult<PlatformConversation>;
+    async fn get_platform_conversation(
+        &self,
+        platform_conversation_id: &str,
+    ) -> SkyNetResult<PlatformConversation>;
 
     /// 列出所有可用的平台会话
     ///
@@ -238,7 +259,10 @@ pub trait BridgeService: Send + Sync {
     /// # 返回
     /// - 成功时返回平台用户列表
     /// - 失败时返回错误
-    async fn list_platform_participants(&self, platform_conversation_id: &str) -> SkyNetResult<Vec<PlatformUser>>;
+    async fn list_platform_participants(
+        &self,
+        platform_conversation_id: &str,
+    ) -> SkyNetResult<Vec<PlatformUser>>;
 
     /// 创建用户映射
     ///
@@ -278,7 +302,10 @@ pub trait BridgeService: Send + Sync {
     /// # 返回
     /// - 成功时返回会话映射
     /// - 失败时返回错误
-    async fn get_conversation_mapping(&self, platform_conversation_id: &str) -> SkyNetResult<ConversationMapping>;
+    async fn get_conversation_mapping(
+        &self,
+        platform_conversation_id: &str,
+    ) -> SkyNetResult<ConversationMapping>;
 
     /// 设置消息转换器
     ///

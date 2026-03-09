@@ -65,7 +65,11 @@ pub trait ChatService: Send + Sync {
     /// # 返回
     /// - 成功时返回更新后的消息
     /// - 失败时返回错误
-    async fn update_message(&self, message_id: MessageId, content: MessageContent) -> SkyNetResult<Message>;
+    async fn update_message(
+        &self,
+        message_id: MessageId,
+        content: MessageContent,
+    ) -> SkyNetResult<Message>;
 
     /// 删除消息
     ///
@@ -86,5 +90,9 @@ pub trait ChatService: Send + Sync {
     /// # 返回
     /// - 成功时返回更新后的消息
     /// - 失败时返回错误
-    async fn mark_message_as_read(&self, message_id: MessageId, reader_id: UserId) -> SkyNetResult<Message>;
+    async fn mark_message_as_read(
+        &self,
+        message_id: MessageId,
+        reader_id: UserId,
+    ) -> SkyNetResult<Message>;
 }

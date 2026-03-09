@@ -194,7 +194,11 @@ pub trait GatewayService: Send + Sync {
     /// # 返回
     /// - 成功时返回空
     /// - 失败时返回错误
-    async fn configure_rate_limit(&self, service_name: &str, max_requests_per_second: u32) -> SkyNetResult<()>;
+    async fn configure_rate_limit(
+        &self,
+        service_name: &str,
+        max_requests_per_second: u32,
+    ) -> SkyNetResult<()>;
 }
 
 /// 网关响应结构体

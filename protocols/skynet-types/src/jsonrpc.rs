@@ -62,7 +62,11 @@ pub struct JsonRpcError {
 impl JsonRpcError {
     /// 创建一个新的 JSON-RPC 错误
     pub fn new(code: JsonRpcErrorCode, message: Option<String>, data: Option<Value>) -> Self {
-        JsonRpcError { code: code.code(), message: message.unwrap_or_else(|| code.message().to_string()), data }
+        JsonRpcError {
+            code: code.code(),
+            message: message.unwrap_or_else(|| code.message().to_string()),
+            data,
+        }
     }
 }
 
@@ -82,7 +86,12 @@ pub struct JsonRpcRequest {
 impl JsonRpcRequest {
     /// 创建一个新的 JSON-RPC 请求
     pub fn new(method: String, params: Option<Value>, id: Uuid) -> Self {
-        JsonRpcRequest { jsonrpc: JSONRPC_VERSION.to_string(), method, params, id }
+        JsonRpcRequest {
+            jsonrpc: JSONRPC_VERSION.to_string(),
+            method,
+            params,
+            id,
+        }
     }
 }
 
@@ -100,7 +109,11 @@ pub struct JsonRpcResponse {
 impl JsonRpcResponse {
     /// 创建一个新的 JSON-RPC 成功响应
     pub fn new(result: Value, id: Uuid) -> Self {
-        JsonRpcResponse { jsonrpc: JSONRPC_VERSION.to_string(), result, id }
+        JsonRpcResponse {
+            jsonrpc: JSONRPC_VERSION.to_string(),
+            result,
+            id,
+        }
     }
 }
 
@@ -118,7 +131,11 @@ pub struct JsonRpcErrorResponse {
 impl JsonRpcErrorResponse {
     /// 创建一个新的 JSON-RPC 错误响应
     pub fn new(error: JsonRpcError, id: Uuid) -> Self {
-        JsonRpcErrorResponse { jsonrpc: JSONRPC_VERSION.to_string(), error, id }
+        JsonRpcErrorResponse {
+            jsonrpc: JSONRPC_VERSION.to_string(),
+            error,
+            id,
+        }
     }
 }
 

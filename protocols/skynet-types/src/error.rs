@@ -1,5 +1,12 @@
 use std::fmt;
 
+/// SkyNet 统一错误结构体
+#[derive(Debug, Clone)]
+pub struct SkyNetError {
+    /// 错误类型（包含 i18n key 和参数）
+    pub kind: Box<SkyNetErrorKind>,
+}
+
 /// SkyNet 错误类型枚举（每个变体对应一个 i18n 国际化键）
 #[derive(Debug, Clone)]
 pub enum SkyNetErrorKind {
@@ -338,7 +345,9 @@ impl SkyNetErrorKind {
             SkyNetErrorKind::OrganizationNotFound { .. } => "error.organization_not_found",
             SkyNetErrorKind::DepartmentNotFound { .. } => "error.department_not_found",
             SkyNetErrorKind::RoleNotFound { .. } => "error.role_not_found",
-            SkyNetErrorKind::OrganizationAlreadyExists { .. } => "error.organization_already_exists",
+            SkyNetErrorKind::OrganizationAlreadyExists { .. } => {
+                "error.organization_already_exists"
+            }
             SkyNetErrorKind::DepartmentAlreadyExists { .. } => "error.department_already_exists",
             SkyNetErrorKind::RoleAlreadyExists { .. } => "error.role_already_exists",
 
@@ -349,7 +358,9 @@ impl SkyNetErrorKind {
             SkyNetErrorKind::SkillVersionNotFound { .. } => "error.skill_version_not_found",
             SkyNetErrorKind::SkillManifestNotFound { .. } => "error.skill_manifest_not_found",
             SkyNetErrorKind::SkillAlreadyExists { .. } => "error.skill_already_exists",
-            SkyNetErrorKind::SkillVersionAlreadyExists { .. } => "error.skill_version_already_exists",
+            SkyNetErrorKind::SkillVersionAlreadyExists { .. } => {
+                "error.skill_version_already_exists"
+            }
             SkyNetErrorKind::SkillNotEnabled => "error.skill_not_enabled",
             SkyNetErrorKind::SkillNotLoaded => "error.skill_not_loaded",
             SkyNetErrorKind::ExecutionTimeout => "error.execution_timeout",
@@ -359,17 +370,12 @@ impl SkyNetErrorKind {
     }
 }
 
-/// SkyNet 统一错误结构体
-#[derive(Debug, Clone)]
-pub struct SkyNetError {
-    /// 错误类型（包含 i18n key 和参数）
-    pub kind: Box<SkyNetErrorKind>,
-}
-
 impl SkyNetError {
     /// 创建一个新的 SkyNetError
     pub fn new(kind: SkyNetErrorKind) -> Self {
-        Self { kind: Box::new(kind) }
+        Self {
+            kind: Box::new(kind),
+        }
     }
 }
 
@@ -382,26 +388,44 @@ impl fmt::Display for SkyNetError {
             SkyNetErrorKind::Internal { msg } => write!(f, "Internal error: {}", msg),
 
             SkyNetErrorKind::FileNotFound { id } => write!(f, "File not found: {}", id),
-            SkyNetErrorKind::FileAlreadyExists { name } => write!(f, "File already exists: {}", name),
+            SkyNetErrorKind::FileAlreadyExists { name } => {
+                write!(f, "File already exists: {}", name)
+            }
             SkyNetErrorKind::FileTooLarge { size } => write!(f, "File too large: {} bytes", size),
-            SkyNetErrorKind::UnsupportedFileType { ext } => write!(f, "Unsupported file type: {}", ext),
+            SkyNetErrorKind::UnsupportedFileType { ext } => {
+                write!(f, "Unsupported file type: {}", ext)
+            }
             SkyNetErrorKind::NoPermission => write!(f, "No permission"),
             SkyNetErrorKind::StorageError { msg } => write!(f, "Storage error: {}", msg),
 
             SkyNetErrorKind::MemoryNotFound { id } => write!(f, "Memory not found: {}", id),
             SkyNetErrorKind::TagNotFound { id } => write!(f, "Tag not found: {}", id),
-            SkyNetErrorKind::RelationNotFound { from, to } => write!(f, "Relation not found: {} -> {}", from, to),
-            SkyNetErrorKind::RelationAlreadyExists { from, to } => write!(f, "Relation already exists: {} -> {}", from, to),
+            SkyNetErrorKind::RelationNotFound { from, to } => {
+                write!(f, "Relation not found: {} -> {}", from, to)
+            }
+            SkyNetErrorKind::RelationAlreadyExists { from, to } => {
+                write!(f, "Relation already exists: {} -> {}", from, to)
+            }
 
             SkyNetErrorKind::EntityNotFound { id } => write!(f, "Entity not found: {}", id),
-            SkyNetErrorKind::EntityAlreadyExists { id } => write!(f, "Entity already exists: {}", id),
+            SkyNetErrorKind::EntityAlreadyExists { id } => {
+                write!(f, "Entity already exists: {}", id)
+            }
             SkyNetErrorKind::DatabaseError { msg } => write!(f, "Database error: {}", msg),
             SkyNetErrorKind::ConnectionError { msg } => write!(f, "Connection error: {}", msg),
-            SkyNetErrorKind::SerializationError { msg } => write!(f, "Serialization error: {}", msg),
-            SkyNetErrorKind::ConstraintViolation { msg } => write!(f, "Constraint violation: {}", msg),
+            SkyNetErrorKind::SerializationError { msg } => {
+                write!(f, "Serialization error: {}", msg)
+            }
+            SkyNetErrorKind::ConstraintViolation { msg } => {
+                write!(f, "Constraint violation: {}", msg)
+            }
 
-            SkyNetErrorKind::JsonSerialization { msg } => write!(f, "JSON serialization error: {}", msg),
-            SkyNetErrorKind::JsonDeserialization { msg } => write!(f, "JSON deserialization error: {}", msg),
+            SkyNetErrorKind::JsonSerialization { msg } => {
+                write!(f, "JSON serialization error: {}", msg)
+            }
+            SkyNetErrorKind::JsonDeserialization { msg } => {
+                write!(f, "JSON deserialization error: {}", msg)
+            }
 
             SkyNetErrorKind::Io { msg } => write!(f, "IO error: {}", msg),
             SkyNetErrorKind::Config { msg } => write!(f, "Config error: {}", msg),
@@ -416,10 +440,16 @@ impl fmt::Display for SkyNetError {
             SkyNetErrorKind::TaskAlreadyCanceled => write!(f, "Task already canceled"),
             SkyNetErrorKind::CapabilityNotSupported => write!(f, "Capability not supported"),
 
-            SkyNetErrorKind::ConversationNotFound { id } => write!(f, "Conversation not found: {}", id),
+            SkyNetErrorKind::ConversationNotFound { id } => {
+                write!(f, "Conversation not found: {}", id)
+            }
             SkyNetErrorKind::MessageNotFound { id } => write!(f, "Message not found: {}", id),
-            SkyNetErrorKind::ParticipantNotFound { id } => write!(f, "Participant not found: {}", id),
-            SkyNetErrorKind::ParticipantAlreadyExists { id } => write!(f, "Participant already exists: {}", id),
+            SkyNetErrorKind::ParticipantNotFound { id } => {
+                write!(f, "Participant not found: {}", id)
+            }
+            SkyNetErrorKind::ParticipantAlreadyExists { id } => {
+                write!(f, "Participant already exists: {}", id)
+            }
 
             SkyNetErrorKind::InvalidCredentials => write!(f, "Invalid credentials"),
             SkyNetErrorKind::InvalidToken => write!(f, "Invalid token"),
@@ -427,21 +457,37 @@ impl fmt::Display for SkyNetError {
             SkyNetErrorKind::UserAlreadyExists { id } => write!(f, "User already exists: {}", id),
             SkyNetErrorKind::UserNotFound { id } => write!(f, "User not found: {}", id),
 
-            SkyNetErrorKind::OrganizationNotFound { id } => write!(f, "Organization not found: {}", id),
+            SkyNetErrorKind::OrganizationNotFound { id } => {
+                write!(f, "Organization not found: {}", id)
+            }
             SkyNetErrorKind::DepartmentNotFound { id } => write!(f, "Department not found: {}", id),
             SkyNetErrorKind::RoleNotFound { id } => write!(f, "Role not found: {}", id),
-            SkyNetErrorKind::OrganizationAlreadyExists { id } => write!(f, "Organization already exists: {}", id),
-            SkyNetErrorKind::DepartmentAlreadyExists { id } => write!(f, "Department already exists: {}", id),
+            SkyNetErrorKind::OrganizationAlreadyExists { id } => {
+                write!(f, "Organization already exists: {}", id)
+            }
+            SkyNetErrorKind::DepartmentAlreadyExists { id } => {
+                write!(f, "Department already exists: {}", id)
+            }
             SkyNetErrorKind::RoleAlreadyExists { id } => write!(f, "Role already exists: {}", id),
 
-            SkyNetErrorKind::NotificationNotFound { id } => write!(f, "Notification not found: {}", id),
-            SkyNetErrorKind::SendFailed { msg } => write!(f, "Failed to send notification: {}", msg),
+            SkyNetErrorKind::NotificationNotFound { id } => {
+                write!(f, "Notification not found: {}", id)
+            }
+            SkyNetErrorKind::SendFailed { msg } => {
+                write!(f, "Failed to send notification: {}", msg)
+            }
 
             SkyNetErrorKind::SkillNotFound { id } => write!(f, "Skill not found: {}", id),
-            SkyNetErrorKind::SkillVersionNotFound { id } => write!(f, "Skill version not found: {}", id),
-            SkyNetErrorKind::SkillManifestNotFound { id } => write!(f, "Skill manifest not found: {}", id),
+            SkyNetErrorKind::SkillVersionNotFound { id } => {
+                write!(f, "Skill version not found: {}", id)
+            }
+            SkyNetErrorKind::SkillManifestNotFound { id } => {
+                write!(f, "Skill manifest not found: {}", id)
+            }
             SkyNetErrorKind::SkillAlreadyExists { id } => write!(f, "Skill already exists: {}", id),
-            SkyNetErrorKind::SkillVersionAlreadyExists { id } => write!(f, "Skill version already exists: {}", id),
+            SkyNetErrorKind::SkillVersionAlreadyExists { id } => {
+                write!(f, "Skill version already exists: {}", id)
+            }
             SkyNetErrorKind::SkillNotEnabled => write!(f, "Skill not enabled"),
             SkyNetErrorKind::SkillNotLoaded => write!(f, "Skill not loaded"),
             SkyNetErrorKind::ExecutionTimeout => write!(f, "Execution timeout"),
