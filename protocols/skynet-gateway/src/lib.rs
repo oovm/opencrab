@@ -1,5 +1,8 @@
 #![warn(missing_docs)]
 #![allow(clippy::too_many_arguments)]
+//! SkyNet Gateway - 网络网关协议
+//!
+//! 提供 SkyNet 网络的网关功能，支持请求路由、会话管理和服务发现。
 
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};

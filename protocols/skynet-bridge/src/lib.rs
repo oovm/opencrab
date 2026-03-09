@@ -1,10 +1,14 @@
 #![warn(missing_docs)]
+//! SkyNet Bridge - 跨平台桥接协议
+//!
+//! 提供 SkyNet 网络与外部平台之间的桥接功能，支持消息转换和事件转发。
+
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use skynet_types::{
     BridgeConfig, Message, PlatformConversation, PlatformEvent, PlatformMessage, PlatformType,
-    PlatformUser, SkyNetError, SkyNetErrorKind, SkyNetResult,
+    PlatformUser, SkyNetResult,
 };
 use uuid::Uuid;
 
