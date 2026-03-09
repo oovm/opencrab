@@ -2,9 +2,7 @@
 //!
 //! 基于 WAE 框架提供的统一错误类型，扩展 Crab 特定功能。
 
-pub use wae_types::{
-    ErrorCategory, WaeError, WaeErrorKind, WaeResult,
-};
+pub use wae_types::{ErrorCategory, WaeError, WaeErrorKind, WaeResult};
 
 /// Crab 错误类型
 ///

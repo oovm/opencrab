@@ -87,12 +87,12 @@ skynet-persistence = { path = "protocols/skynet-persistence" }
 skynet-service = { path = "protocols/skynet-service" }
 skynet-storage = { path = "protocols/skynet-storage" }
 
-wae-config = { path = "../wae/backends/wae-config" }
-wae-database = { path = "../wae/backends/wae-database" }
-wae-cache = { path = "../wae/backends/wae-cache" }
-wae-https = { path = "../wae/backends/wae-https" }
-wae-effect = { path = "../wae/backends/wae-effect" }
-wae-queue = { path = "../wae/backends/wae-queue" }
-wae-event = { path = "../wae/backends/wae-event" }
-wae-storage = { path = "../wae/backends/wae-storage" }
-wae-types = { path = "../wae/backends/wae-types" }
+wae-config = { git = "https://github.com/oovm/wae" }
+wae-database = { git = "https://github.com/oovm/wae" }
+wae-cache = { git = "https://github.com/oovm/wae" }
+wae-https = { git = "https://github.com/oovm/wae" }
+wae-effect = { git = "https://github.com/oovm/wae" }
+wae-queue = { git = "https://github.com/oovm/wae" }
+wae-event = { git = "https://github.com/oovm/wae" }
+wae-storage = { git = "https://github.com/oovm/wae" }
+wae-types = { git = "https://github.com/oovm/wae" }

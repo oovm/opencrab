@@ -6,7 +6,7 @@
 
 pub use chrono::{DateTime, Utc};
 pub use uuid::Uuid;
-pub use wae_types::{WaeError, WaeErrorKind, WaeResult};
+pub use wae_types::{ErrorCategory, WaeError, WaeErrorKind, WaeResult};
 
 mod error;
 mod types;

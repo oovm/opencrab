@@ -45,8 +45,7 @@ pub mod prelude {
     pub use crab_skill::{MemorySkillService, Skill, SkillService, SkillType};
     pub use crab_tool::{MemoryToolService, Tool, ToolExecutionResult, ToolService};
     pub use crab_types::{
-        CrabError, CrabErrorKind, CrabResult, DateTime, Error, Result, Utc, Uuid, WaeError,
-        WaeErrorKind, WaeResult,
+        CrabError, CrabErrorKind, CrabResult, DateTime, Error, ErrorCategory, Result, Utc, Uuid,
     };
     pub use crab_workspace::{MemoryWorkspaceService, Workspace, WorkspaceService};
     pub use wae_cache::{CacheService, memory_cache};

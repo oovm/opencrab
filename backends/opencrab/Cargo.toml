@@ -10,9 +10,9 @@ keywords = ["ai", "agent", "llm", "chatbot", "automation"]
 categories = ["asynchronous", "web-programming"]
 documentation = "https://docs.rs/opencrab"
 
-[[bin]]
-name = "opencrab"
-path = "src/bin/opencrab.rs"
+# [[bin]]
+# name = "opencrab"
+# path = "src/bin/opencrab.rs"
 
 [dependencies]
 crab-types = { workspace = true }

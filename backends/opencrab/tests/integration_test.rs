@@ -113,7 +113,8 @@ async fn test_workspace_creation() {
 
 #[test]
 fn test_error_creation() {
+    use opencrab::types::ErrorCategory;
     let error = Error::not_implemented("test_feature");
     assert_eq!(error.http_status(), 500);
-    assert_eq!(error.category(), crab_types::ErrorCategory::Internal);
+    assert_eq!(error.category(), ErrorCategory::Internal);
 }
