@@ -40,14 +40,14 @@ pub mod prelude {
 
     pub use crab_agent::{Agent, AgentService, AgentStatus, AgentType, MemoryAgentService};
     pub use wae_cache::{CacheService, memory_cache};
-    pub use crab_chat::{ChatService, Conversation, MemoryChatService, Message};
+    pub use crab_chat::{ChatService, Conversation, MemoryChatService, Message as ChatMessage};
     pub use wae_config::ConfigLoader;
     pub use wae_database::{DatabaseConnection, Entity, Repository};
     pub use wae_effect::{AlgebraicEffect, Effectful};
     pub use wae_event::{Event, EventBus, event_bus, memory_event_store};
     pub use wae_https::{ApiResponse, HttpsServer};
     pub use crab_memory::{Memory, MemoryMemoryService, MemoryService, MemoryType};
-    pub use wae_queue::{Message, MessageProducer, MessageConsumer, QueueService, memory_queue_service};
+    pub use wae_queue::{Message as QueueMessage, MessageProducer, MessageConsumer, QueueService, memory_queue_service};
     pub use crab_scheduler::{MemorySchedulerService, ScheduledTask, SchedulerService, TaskStatus};
     pub use crab_skill::{MemorySkillService, Skill, SkillService, SkillType};
     pub use wae_storage::{LocalStorageProvider, StorageProvider, StorageService};

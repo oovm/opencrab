@@ -16,6 +16,7 @@ path = "src/bin/opencrab.rs"
 
 [dependencies]
 crab-types = { workspace = true }
+wae-types = { workspace = true }
 wae-config = { workspace = true }
 wae-database = { workspace = true }
 wae-cache = { workspace = true }
