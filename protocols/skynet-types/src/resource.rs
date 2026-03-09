@@ -1,6 +1,7 @@
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
+use std::str::FromStr;
 
 use crate::id::{ResourceId, UserId};
 
@@ -57,20 +58,23 @@ pub struct Resource {
     pub metadata: Option<Value>,
 }
 
-impl ResourceType {
-    /// 从字符串创建资源类型
-    pub fn from_str(s: &str) -> Self {
+impl FromStr for ResourceType {
+    type Err = ();
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {
-            "file" => ResourceType::File,
-            "image" => ResourceType::Image,
-            "document" => ResourceType::Document,
-            "video" => ResourceType::Video,
-            "audio" => ResourceType::Audio,
-            "link" => ResourceType::Link,
-            _ => ResourceType::Custom(s.to_string()),
+            "file" => Ok(ResourceType::File),
+            "image" => Ok(ResourceType::Image),
+            "document" => Ok(ResourceType::Document),
+            "video" => Ok(ResourceType::Video),
+            "audio" => Ok(ResourceType::Audio),
+            "link" => Ok(ResourceType::Link),
+            _ => Ok(ResourceType::Custom(s.to_string())),
         }
     }
+}
 
+impl ResourceType {
     /// 转换为字符串
     pub fn as_str(&self) -> &str {
         match self {
